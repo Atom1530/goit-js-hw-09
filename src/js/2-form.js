@@ -27,7 +27,7 @@ function getFromLS(key, defaultValue) {
     const data = JSON.parse(jsonData);
     return data;
   } catch {
-    console.log('ERROR PARSING');
+    console.log( 'ERROR PARSING' );
     return defaultValue || jsonData;
   }
 }
