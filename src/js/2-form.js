@@ -1,5 +1,4 @@
 
-
 const formData = {
     email: "",
     message: "",
@@ -44,3 +43,11 @@ form.elements.email.value = saved.email;
 form.elements.message.value = saved.message;
 
 });
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  localStorage.removeItem('feedback-form-state');
+  form.reset();
+  
+})
