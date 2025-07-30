@@ -1,4 +1,5 @@
 
+
 const formData = {
     email: "",
     message: "",
@@ -31,7 +32,9 @@ function getFromLS(key, defaultValue) {
   }
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
+  
   const saved = getFromLS('feedback-form-state',{ email: "",
   message:"",})
 
@@ -44,10 +47,28 @@ form.elements.message.value = saved.message;
 
 });
 
+form.addEventListener('submit', handleSubmit);
 
-form.addEventListener('submit', (e) => {
+function handleSubmit(e) {
+
   e.preventDefault();
-  localStorage.removeItem('feedback-form-state');
-  form.reset();
+
+  const email = form.elements.email.value.trim();
+  const message = form.elements.message.value.trim();
   
-})
+  if(email === "" || message === ""){
+    return console.log("Please fill in all the fields!");
+    
+  } else if (email.endsWith('.ru')){
+    return console.log('not allowed!');
+    
+  }
+
+  console.log(formData);
+    localStorage.removeItem('feedback-form-state');
+  form.reset();
+  formData.email = "";
+  formData.message = "";
+}
+
+
