@@ -1,5 +1,4 @@
 
-
 const formData = {
     email: "",
     message: "",
@@ -24,13 +23,14 @@ function saveToLS(key, value) {
 function getFromLS(key, defaultValue) {
   const jsonData = localStorage.getItem(key);
   try {
-    const data = JSON.parse(jsonData);
-    return data;
+    if (!jsonData) return defaultValue;
+    return JSON.parse(jsonData);
   } catch {
-    console.log( 'ERROR PARSING' );
-    return defaultValue || jsonData;
+    console.log('ERROR PARSING');
+    return defaultValue;
   }
 }
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
